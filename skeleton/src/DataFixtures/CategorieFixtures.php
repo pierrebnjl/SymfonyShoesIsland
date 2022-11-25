@@ -36,7 +36,7 @@ class CategorieFixtures extends Fixture
 
           
         }
-        $nomCategorieAccessoire = array('Tout voir' , "Lacets" , "Cirage" , "Semelles" );
+        $nomCategorieAccessoire = array("Lacets" , "Cirage" , "Semelles" );
      
         foreach ($nomCategorieAccessoire as $key => $value) {
                     

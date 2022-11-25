@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-
+use App\Entity\Produit;
+use App\Repository\ProduitRepository;
 use App\Entity\Categorie;
-use App\Entity\SousCategorie;
 use App\Repository\CategorieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -65,47 +65,44 @@ class ShoesIslandController extends AbstractController
         'categories' => $categories,
     ]);
 }
-#[Route('/SousCategorieAccessoire' , name:'app_SousCategorieAccessoire')]
-    public function SousCategorieAccessoire(SousCategorieRepository $repoSousCat):Response
-{
-     $SousCategories = $repoSousCat->findBy(array('SousCategorieType' => 'Accessoire'));
 
-    return $this->render('shoesIsland/SousCategorieAccessoire.html.twig' , [
-        'controller_name' => 'ShoesIslandController',
-        'SousCategories' => $SousCategories,
+// Produit //
+
+#[Route('shoesIsland/categorieHomme/{produit}', name: 'app_produit')]
+public function produit(Produit $produit, ProduitRepository $repo): Response
+{
+    $produits = $repo->findBy(array('produitType' => 'Sneakers'));
+    // dd($produit);
+    return $this->render('shoesIsland/ProduitHomme.html.twig', [
+        'produit' => $produit,
+        'produits' => $produits,
     ]);
 }
-    
-#[Route('/SousCategorieEnfant' , name:'app_SousCategorieEnfant')]
-    public function SousCategorieEnfant(SousCategorieRepository $repoSousCat):Response
+public function produit1(Produit $produit1, ProduitRepository $repo): Response
 {
-     $SousCategories = $repoSousCat->findBy(array('SousCategorieType' => 'Enfant'));
-
-    return $this->render('shoesIsland/SousCategorieEnfant.html.twig' , [
-        'controller_name' => 'ShoesIslandController',
-        'SousCategories' => $SousCategories,
+    $produits1 = $repo->findBy(array('produitType' => 'Chaussure de Ville'));
+    // dd($produit);
+    return $this->render('shoesIsland/ProduitHomme.html.twig', [
+        'produit1' => $produit1,
+        'produits1' => $produits1,
     ]);
 }
-#[Route('/SousCategorieHomme' , name:'app_SousCategorieHomme')]
-    public function SousCategorieHomme(SousCategorieRepository $repoSousCat):Response
+public function produit2(Produit $produit2, ProduitRepository $repo): Response
 {
-     $SousCategories = $repoSousCat->findBy(array('SousCategorieType' => 'Homme'));
-
-    return $this->render('shoesIsland/SousCategorieHomme.html.twig' , [
-        'controller_name' => 'ShoesIslandController',
-        'SousCategories' => $SousCategories,
+    $produits2 = $repo->findBy(array('produitType' => 'Chaussure de sport'));
+    // dd($produit);
+    return $this->render('shoesIsland/CategorieHomme/ProduitHomme.html.twig', [
+        'produit2' => $produit2,
+        'produits2' => $produits2,
     ]);
 }
-    #[Route('/SousCategorieFemme' , name:'app_SousCategorieFemme')]
-    public function SousCategorieFemme(SousCategorieRepository $repoSousCat):Response
+public function produit3(Produit $produit3, ProduitRepository $repo): Response
 {
-     $SousCategories = $repoSousCat->findBy(array('SousCategorieType' => 'Femme'));
-
-    return $this->render('shoesIsland/SousCategorieFemme.html.twig' , [
-        'controller_name' => 'ShoesIslandController',
-        'SousCategories' => $SousCategories,
+    $produits3 = $repo->findBy(array('produitType' => 'Chaussure haut de gamme'));
+    // dd($produit);
+    return $this->render('shoesIsland/CategorieHomme/ProduitHomme.html.twig', [
+        'produit3' => $produit3,
+        'produits3' => $produits3,
     ]);
 }
-
-        
-    }
+}

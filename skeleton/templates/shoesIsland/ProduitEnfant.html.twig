@@ -8,12 +8,12 @@
 
 <div class='container-fluid'>
     <section class="row ">
- {% for categorie in categories %}
+ {% for produit in categorie.produits %}
         <div class="card col-2 ml-3 text-white bg-warning" style="">
-            <div class="card-header">{{categorie.categorieNom}}</div>
+            <div class="card-header">{{produit.produitNom}}</div>
         <div class="card-body">
             <a href=""><img src="img\sneaker-removebg-preview.png" class="img_catHomme"/></a>
-            <p class="card-text">{{categorie.categorieType}}</p>
+            <p class="card-text">{{produit.produitType}}</p>
         </div>
         </div>
     {% endfor %}
