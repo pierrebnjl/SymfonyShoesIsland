@@ -68,14 +68,13 @@ class ShoesIslandController extends AbstractController
 
 // Produit //
 
-#[Route('shoesIsland/categorieHomme/{produit}', name: 'app_produit')]
-public function produit(Produit $produit, ProduitRepository $repo): Response
+#[Route('shoesIsland/categorieHomme/{categorieId}', name: 'app_produit')]
+public function produit(int $categorieId, CategorieRepository $repo): Response
 {
-    $produits = $repo->findBy(array('produitType' => 'Sneakers'));
+    $categorie = $repo->find($categorieId);
     // dd($produit);
     return $this->render('shoesIsland/ProduitHomme.html.twig', [
-        'produit' => $produit,
-        'produits' => $produits,
+        'categorie' => $categorie,
     ]);
 }
 public function produit1(Produit $produit1, ProduitRepository $repo): Response

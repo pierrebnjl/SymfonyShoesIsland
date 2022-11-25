@@ -34,7 +34,8 @@ class CategorieFixtures extends Fixture
 
             $manager->persist($categorieEnfant);
 
-          
+            $this->setReference($value, $categorieHomme);
+
         }
         $nomCategorieAccessoire = array("Lacets" , "Cirage" , "Semelles" );
      

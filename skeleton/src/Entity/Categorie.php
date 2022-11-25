@@ -10,6 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
 class Categorie
 {
+
+    #[ORM\OneToMany(targetEntity: Produit::class, mappedBy: 'categorie')]
+    private $produits;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -65,5 +69,13 @@ class Categorie
         $this->categorieImg = $categorieImg;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Produit[]
+     */
+    public function getProduits(): Collection
+    {
+        return $this->produits;
     }
 }
